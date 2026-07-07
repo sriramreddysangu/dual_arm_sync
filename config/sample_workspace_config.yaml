@@ -1,0 +1,100 @@
+# Sample Workspace Configuration for Dual-Arm Testing
+# CORRECTED based on constants.py DH parameters
+# Robot home position has end-effector at z = 1.4525m from base
+
+# Workspace boundaries (in meters) - from constants.py WorkspaceBounds class
+workspace_bounds:
+  x_min: -0.8
+  x_max: 0.8
+  y_min: -1.0
+  y_max: 1.0
+  z_min: 0.0
+  z_max: 1.5      # CORRECTED! (was 1.0, now 1.5 to match constants.py)
+
+# Robot base positions (should match your pipeline_params.yaml)
+robot1_base_y: 0.5   # DSR01 (right side, positive y)
+robot2_base_y: -0.5  # DSR02 (left side, negative y)
+
+# Safety constraints
+min_arm_separation: 0.3      # Minimum distance between any arm positions (meters)
+min_movement_distance: 0.1   # Minimum movement distance per trial (meters)
+max_movement_distance: 0.6   # Maximum movement distance per trial (meters)
+
+# Realistic working height range
+# Base is at z=0, robot home position end-effector is at z=1.4525m
+# Typical working range is 0.2m to 1.4m for comfortable operation
+working_z_min: 0.2           # Stay above ground/table (meters)
+working_z_max: 1.4           # Stay within comfortable reach (meters)
+
+# Position generation preferences
+preferred_zones:
+  # Define zones where positions are more likely to be generated
+  # Useful for focusing tests on specific workspace regions
+  
+  arm1_start_zone:
+    x: [0.3, 0.7]
+    y: [0.3, 0.7]
+    z: [0.3, 0.7]
+  
+  arm1_target_zone:
+    x: [-0.7, 0.7]
+    y: [0.2, 0.8]
+    z: [0.2, 0.8]
+  
+  arm2_start_zone:
+    x: [0.3, 0.7]
+    y: [-0.7, -0.3]
+    z: [0.3, 0.7]
+  
+  arm2_target_zone:
+    x: [-0.7, 0.7]
+    y: [-0.8, -0.2]
+    z: [0.2, 0.8]
+
+# Test strategies configuration
+strategies:
+  random:
+    # Standard random position generation
+    enabled: true
+    bias_toward_center: false
+    
+  challenging:
+    # Generate positions likely to cause collisions
+    enabled: true
+    crossing_paths: true
+    close_approach: true
+    min_separation_override: 0.25  # Allow closer approaches
+    
+  systematic:
+    # Grid-based systematic coverage
+    enabled: true
+    grid_resolution: 0.2  # meters
+    coverage_percentage: 80  # Percentage of grid points to sample
+
+# Collision testing preferences
+collision_testing:
+  # Test different scenarios
+  include_parallel_movements: true
+  include_opposite_movements: true
+  include_crossing_movements: true
+  include_near_miss_scenarios: true
+
+# Performance tuning
+performance:
+  max_position_generation_attempts: 100
+  inter_trial_delay: 0.5  # seconds
+  save_intermediate_results: true
+  
+# Reporting preferences
+reporting:
+  generate_visualizations: false  # Requires matplotlib
+  detailed_collision_analysis: true
+  save_position_heatmaps: false
+  export_formats: ['json', 'csv', 'markdown']
+
+# Notes:
+# - All distances in meters
+# - All angles in radians
+# - Coordinate system: X-forward, Y-left, Z-up
+# - Robot1 (DSR01) operates on positive Y side
+# - Robot2 (DSR02) operates on negative Y side
