@@ -35,53 +35,10 @@ setup(
             'dual_arm_ik_solver = dual_arm_sync.dual_arm_ik_solver:main',
             'ik_interactive = dual_arm_sync.ik_interactive:main',
             
-            # Trajectory Generation (reads ik_solutions.json)
-            'trajectory_generation = dual_arm_sync.trajectory_generation:main',
-            'test_trajectory = dual_arm_sync.trajectory_generation:test_trajectory_generation',
             
-            # Collision Detection (reads trajectories.json)
-            'collision_checker = dual_arm_sync.collision_checker:main',
             
-            # Kuramoto Synchronization (reads collision_report.json)
-            'kuramoto_synchronization = dual_arm_sync.kuramoto_synchronization:main',
-            'kuramoto_sync = dual_arm_sync.kuramoto_sync:main',
-            
-            # RRT-Connect Planner (NEW! - reads ik_solutions.json and synchronized_trajectories.json)
-            'rrt_connect_planner = dual_arm_sync.rrt_connect_planner:main',
-            
-            # Execution
-            'gazebo_executor = dual_arm_sync.gazebo_executor:main',
-            
-            # Testing
-            'results_step1 = dual_arm_sync.results_step1:main',
-            
-            'quad_arm_config           = dual_arm_sync.quad_arm_config:print_config',
-
-            # Step 1 — IK
-            'quad_arm_ik_solver        = dual_arm_sync.quad_arm_ik_solver:main',
-
-            # Step 2 — Trajectory generation
-            'quad_trajectory_generation = dual_arm_sync.quad_trajectory_generation:main',
-
-            # Step 3 — Collision checking
-            'quad_collision_checker    = dual_arm_sync.quad_collision_checker:main',
-
-            # Step 4a — Kuramoto synchronization (collision resolver)
-            'quad_kuramoto_synchronization = dual_arm_sync.quad_kuramoto_synchronization:main',
-
-            # Step 4b — RRT planner (fallback when Kuramoto fails)
-            'quad_rrt_planner          = dual_arm_sync.quad_rrt_planner:main',
-
-            # Step 5 — Gazebo executor
-            
-            'quad_gazebo_executor      = dual_arm_sync.quad_gazebo_executor:main',
-
-            # Utilities
-            'quad_arm_test_pub         = dual_arm_sync.quad_arm_test_pub:main',
-            'quad_arm_results          = dual_arm_sync.quad_arm_results:main',
-
-            'local_deformation = dual_arm_sync.local_deformation:main', 
-            'multi_arm_pipeline = dual_arm_sync.multi_arm_trajectory_planner:run_demo',
+           
+           
 
 
             'step_1 = dual_arm_sync.step_1:main',
@@ -126,40 +83,7 @@ setup(
             'step_45 = dual_arm_sync.step_45:main',
             'step_46 = dual_arm_sync.step_46:main',
             '_robot = dual_arm_sync._robot:main',
-            'step_51 = dual_arm_sync.step_51:main',
-            'step_52 = dual_arm_sync.step_52:main',
-            'step_53 = dual_arm_sync.step_53:main',
-            'step_54 = dual_arm_sync.step_54:main',
-
-            'step_55 = dual_arm_sync.step_55:main',
-            'step_56 = dual_arm_sync.step_56:main',
-            'step_57 = dual_arm_sync.step_57:main',
-            'step_61 = dual_arm_sync.step_61:main',
-            'step_62 = dual_arm_sync.step_62:main',
-            'step_63 = dual_arm_sync.step_63:main',
-            'step_64 = dual_arm_sync.step_64:main',
-            'step_64_viz = dual_arm_sync.step_64_viz:main',
-            'step_65 = dual_arm_sync.step_65:main',
-            'step_66 = dual_arm_sync.step_66:main',
-            'step_67 = dual_arm_sync.step_67:main',
-            'step_68 = dual_arm_sync.step_68:main',
-            'step_69 = dual_arm_sync.step_69:main',
-            'step_70 = dual_arm_sync.step_70:main',
-            'step_71 = dual_arm_sync.step_71:main',
-            'step_72 = dual_arm_sync.step_72:main',
-            'step_73 = dual_arm_sync.step_73:main',
-            'step_74 = dual_arm_sync.step_74:main',
-            'step_75 = dual_arm_sync.step_75:main',
-            'step_76 = dual_arm_sync.step_76:main',
-            'step_77 = dual_arm_sync.step_77:main',
-            'step_78 = dual_arm_sync.step_78:main',
-            'step_79 = dual_arm_sync.step_79:main',
-            'step_80 = dual_arm_sync.step_80:main',
-            'run_pipeline = dual_arm_sync.run_pipeline:main',
-            'step_100 = dual_arm_sync.step_100:main',
-            'step_81 = dual_arm_sync.step_81:main',
-            'step_82 = dual_arm_sync.step_82:main',
-            'step_83 = dual_arm_sync.step_83:main',
+            
 
 
 
